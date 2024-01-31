@@ -1,4 +1,4 @@
-module github.com/temelpa/timetravel
+module github.com/chauvm/timetravel
 
 go 1.17
 

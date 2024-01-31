@@ -81,7 +81,7 @@ id | timestamp | data | accumulated_data
 We can combine the previous approaches. Depending on the traffic pattern, we could come up with a threshold, such as after 10 new updates, we calculate a checkpoint for the record, i.e. how the record looks like after 10, 20, 30... updates. If users request to see data at `version=13`, we find the checkpoint data at `version=10`, find the updates happening at timestamps between `10` and `13`, and merge their fields to return `{"hi":"mom"}`.
 
 records
-id  | timestamp | data | accumulated_data
+id  | timestamp | data | accumulated
 ---------------------
 1   | ts1       | {"hello":"world"}    | NULL
 ...
@@ -142,3 +142,5 @@ Conclusion: we can pick a strategy depending on the actual shape of the records 
   - acceptance criteria 1-4
 Normally I write unit tests as I implement the code, but I'd need more time to get used to Go again, so I'll likely just use Postman or Python to visually check for expected results
   - acceptance criteria 5: kill the server and restart, see if a GET request still returns data
+- Optimization for DB
+  - modify primary keys, add indexes as needed
